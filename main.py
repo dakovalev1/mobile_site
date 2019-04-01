@@ -13,6 +13,8 @@ print("<meta charset=\"utf-8\">", file=index)
 print("<title>Author Name</title>", file=index)
 print("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">", file=index)
 print("<link rel=\"stylesheet\" href=\"main.css\">", file=index)
+print("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>", file=index)
+print("<script src=\"main.js\"></script>", file=index)
 print("</head>", file=index)
 
 print("<body>", file=index)
