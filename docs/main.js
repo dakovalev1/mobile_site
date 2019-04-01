@@ -11,4 +11,9 @@ $(document).ready(function(){
         menu_toggle = !menu_toggle;
         return false;
     });
+    
+    $("ul.menu li.menu-item a").click(function(){
+        //alert("123");
+        $.scrollTo($(this).attr("href"), 500, {offset:-50});
+    });
 });
