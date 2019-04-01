@@ -15,6 +15,7 @@ print("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">"
 print("<link rel=\"stylesheet\" href=\"main.css\">", file=index)
 print("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>", file=index)
 print("<script src=\"main.js\"></script>", file=index)
+print("<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.8.1/css/all.css\" integrity=\"sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf\" crossorigin=\"anonymous\">", file=index)
 print("</head>", file=index)
 
 print("<body>", file=index)
@@ -23,7 +24,7 @@ print("<body>", file=index)
 # MENU BEGIN
 print("<ul class=\"menu\">", file=index)
 
-print("<li class=\"menu-button\"><a href=\"index.html\"><b>X</b></a></li>", file=index)
+print("<li class=\"menu-button\"><a href=\"index.html\"><i class=\"fas fa-bars\"></i></a></li>", file=index)
 print("<li class=\"menu-title\"><a href=\"index.html\"><b>Author Name</b></a></li>", file=index)
 
 
