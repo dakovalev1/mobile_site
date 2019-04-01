@@ -6,32 +6,88 @@ body {
 ul.menu{
     background-color: #348;
     list-style-type: none;
+    position: fixed;
+    overflow: hidden;
+    
+    width: 100%;
+    
     margin: 0;
     padding: 0;
     top: 0;
-    position: fixed;
-    width: 100%;
-    overflow: hidden;
-    height: 53px;
-    
 }
 
-ul.menu:hover{
+/*ul.menu:hover{
     height: 213px;
     transition-duration: 0.5s;
-}
+}*/
 
 ul.menu a{
     color: white;
     text-decoration: none;
+}
+
+ul.menu li.menu-button{
+    float: right;
     margin: 0 15px;
 }
 
-ul.menu a.menu-title{
+ul.menu li.menu-item{
+    margin: 0 15px;
+}
+
+ul.menu li.menu-title{
+    margin: 0 15px;
+}
+
+
+ul.menu li.menu-button a{
+    background-color: red;
+    height:40px;
+    line-height:40px;
+    display: inline-block;
+    font-size: 20px;
+}
+
+ul.menu li.menu-title a{
+    background-color: black;
+    height:40px;
+    line-height:40px;
+    display: inline-block;
+    font-size: 20px;
+}
+
+ul.menu li.menu-item a{
+    background-color: lawngreen;
+    height:40px;
+    line-height:40px;
+    display: block;
+    font-size: 17px;
+}
+
+
+/*ul.menu li.menu-button{
+    float:left;
+    display: none;
+}
+
+ul.menu li.menu-item{
+    float:left;
+}
+
+ul.menu li.menu-title{
+    float:left;
+}*/
+
+
+
+
+
+/*ul.menu a.menu-title{
     font-size: 20px;
     padding: 15px 0px;
     background-color: black;
     display: inline-block;
+    float: left;
 }
 
 ul.menu a.menu-button{
@@ -40,6 +96,7 @@ ul.menu a.menu-button{
     margin: 15px 15px;
     font-size: 20px;
     display: inline-block;
+    float: right;
 }
 
 ul.menu a.menu-item{
@@ -47,4 +104,10 @@ ul.menu a.menu-item{
     padding: 10px 0px;
     background-color: red;
     display: block;
+    float: none;
 }
+
+
+div.menu-header{
+    float:left;
+}*/

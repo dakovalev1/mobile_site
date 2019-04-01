@@ -2,7 +2,7 @@ index = open("docs/index.html", "w")
 
 
 def menu_item(item):
-    print("<li><a href=\"#" + item.lower() + ".body-section\" class=\"menu-item\" id=\"" + item.lower() + "\"><b>" + item + "</b></a></li>", file=index)
+    print("<li class=\"menu-item\"><a href=\"#" + item.lower() + ".body-section\" id=\"" + item.lower() + "\"><b>" + item + "</b></a></li>", file=index)
 
 
 print("<!DOCTYPE html>", file=index)
@@ -20,8 +20,10 @@ print("<body>", file=index)
 
 # MENU BEGIN
 print("<ul class=\"menu\">", file=index)
-print("<li><a href=\"index.html\" class=\"menu-title\"><b>Author Name</b></a></li>", file=index)
-#print("<li><a href=\"index.html\" class=\"menu-button\">X</a></li>", file=index)
+
+print("<li class=\"menu-button\"><a href=\"index.html\"><b>X</b></a></li>", file=index)
+print("<li class=\"menu-title\"><a href=\"index.html\"><b>Author Name</b></a></li>", file=index)
+
 
 menu_item("Home")
 menu_item("News")
