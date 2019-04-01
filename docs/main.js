@@ -13,7 +13,7 @@ $(document).ready(function(){
     });
     
     $("ul.menu li.menu-item a").click(function(){
-        //alert("123");
         $.scrollTo($(this).attr("href"), 500, {offset:-50});
+        return false;
     });
 });
