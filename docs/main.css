@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+ul.menu{
+    background-color: #348;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+    height: 53px;
+    
+}
+
+ul.menu:hover{
+    height: 213px;
+    transition-duration: 0.5s;
+}
+
+ul.menu a{
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+ul.menu a.menu-title{
+    font-size: 20px;
+    padding: 15px 0px;
+    background-color: black;
+    display: inline-block;
+}
+
+ul.menu a.menu-button{
+    background-color: green;
+    padding: 0 0;
+    margin: 15px 15px;
+    font-size: 20px;
+    display: inline-block;
+}
+
+ul.menu a.menu-item{
+    font-size: 17px;
+    padding: 10px 0px;
+    background-color: red;
+    display: block;
+}
