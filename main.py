@@ -17,7 +17,7 @@ index = open("docs/index.html", "w")
 
 
 def menu_item(item):
-    print("<li class=\"menu-item\"><a href=\"#" + item.lower() + ".page-section\" id=\"" + item.lower() + "\"><b>" + item + "</b></a></li>", file=index)
+    print("<li class=\"menu-item\" id=\"" + item.lower() + "\"><a href=\"#" + item.lower() + ".page-section\"><b>" + item + "</b></a></li>", file=index)
 
 
 def page_section_begin(block, color):
@@ -26,6 +26,9 @@ def page_section_begin(block, color):
     
 
 def page_section_end():
+    print("...some text...<br>", file=index)
+    print("...some text...<br>", file=index)
+    print("...some text...<br>", file=index)
     print("...some text...<br>", file=index)
     print("...some text...<br>", file=index)
     print("...some text...<br>", file=index)

@@ -23,6 +23,7 @@ ul.menu{
 
 ul.menu a{
     color: white;
+    transition: color 0.2s;
     text-decoration: none;
 }
 
