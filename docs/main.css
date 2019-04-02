@@ -34,6 +34,7 @@ ul.menu li.menu-button{
 
 ul.menu li.menu-item{
     margin: 0 15px;
+    transition: padding 0.1s
 }
 
 ul.menu li.menu-title{

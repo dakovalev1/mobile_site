@@ -1,6 +1,8 @@
 $(document).ready(function(){
     var menu_toggle = false;
+    
     const menu_select_color = "#89f";
+    const menu_select_padding = "10px";
     
     $("ul.menu").css("height", "50px");
     
@@ -36,4 +38,12 @@ $(document).ready(function(){
         }
         
     }, {offset: "50px"});
+    
+    $("ul.menu li.menu-item a").mouseenter(function(){
+        $(this).parent("li.menu-item").css("padding-left", menu_select_padding);
+    });
+    $("ul.menu li.menu-item a").mouseleave(function(){
+        $(this).parent("li.menu-item").css("padding-left", "0px");
+    });
+    
 });
