@@ -34,7 +34,6 @@ ul.menu li.menu-button{
 
 ul.menu li.menu-item{
     margin: 0 15px;
-    transition: padding 0.1s
 }
 
 ul.menu li.menu-title{
@@ -61,6 +60,7 @@ ul.menu li.menu-item a{
     line-height:50px;
     display: block;
     font-size: 17px;
+    transition: padding 0.1s
 }
 
 
@@ -76,4 +76,12 @@ div.page-section{
 div.page-section h1.page-section-title{
     font-family:"Helvetica";
     font-weight:400;
+}
+
+div.page-section div{
+    font-family: "Helvetica";
+    background-color: white;
+    padding: 15px;
+    margin: 0;
+    font-size: 13px;
 }

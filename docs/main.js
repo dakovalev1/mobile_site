@@ -40,10 +40,10 @@ $(document).ready(function(){
     }, {offset: "50px"});
     
     $("ul.menu li.menu-item a").mouseenter(function(){
-        $(this).parent("li.menu-item").css("padding-left", menu_select_padding);
+        $(this).css("padding-left", menu_select_padding);
     });
     $("ul.menu li.menu-item a").mouseleave(function(){
-        $(this).parent("li.menu-item").css("padding-left", "0px");
+        $(this).css("padding-left", "0px");
     });
     
 });

@@ -5,12 +5,16 @@ def compile_post(post):
     input = open("posts/" + post + ".md", "r")
     output = open("docs/posts/" + post + ".html", "w")
 
-    print("<html>", file=output)
-    print("<body style=\"margin: 0;\">", file=output)
+    #print("<html>", file=output)
+    #print("<body style=\"margin: 0;\">", file=output)
+    print("<div>", file=output)
     print(markdown.markdown(input.read()), file=output)
-    print("</body>", file=output)
-    print("</html>", file=output)
+    print("</div>", file=output)
+    #print("</body>", file=output)
+    #print("</html>", file=output)
 
+
+compile_post("1")
 
 
 index = open("docs/index.html", "w")
