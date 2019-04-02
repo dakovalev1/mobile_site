@@ -17,6 +17,8 @@ ul.menu{
     top: 0;
     
     transition: height 0.5s;
+    
+    font-family: sans-serif;
 }
 
 ul.menu a{
@@ -59,11 +61,17 @@ ul.menu li.menu-item a{
     font-size: 17px;
 }
 
+
+
 div.page-section{
     margin: 0;
     padding: 15px;
     
     font-size: 18px;
-    
-    height: 300px;
+    font-family:"Helvetica-Light";
+}
+
+div.page-section h1.page-section-title{
+    font-family:"Helvetica";
+    font-weight:400;
 }
