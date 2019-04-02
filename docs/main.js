@@ -46,4 +46,9 @@ $(document).ready(function(){
         $(this).css("padding-left", "0px");
     });
     
+    $.get("posts/1.html", function(data){
+        console.log("success")
+        console.log(data)
+    }, "text");
+    
 });
