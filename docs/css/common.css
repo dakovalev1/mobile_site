@@ -96,3 +96,10 @@ div.page-section h1.page-section-title{
     font-size: 15px;
     font-family: monospace;
 }
+
+#news.page-section div.post-list a.post-link{
+    color: #45b;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: padding 0.2s;
+}

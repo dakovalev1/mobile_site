@@ -59,8 +59,9 @@ def gen_index():
         print("</div>", file=index)
 
     def news_section():
-        for root, dirs, files in os.walk("posts"):
+        print("<a href=\"\" class=\"post-link\">More Posts <i class=\"fas fa-angle-double-right\"></i></a>", file=index)
 
+        for root, dirs, files in os.walk("posts"):
             int_names = [int(name, 10) for name in dirs]
             int_names.sort()
             str_names = [str(name) for name in int_names]

@@ -3,6 +3,8 @@ $(document).ready(function(){
     
     const menu_select_color = "#89f";
     const menu_select_padding = "10px";
+
+    const post_link_select_padding = "10px";
     
     $("ul.menu").css("height", "50px");
     
@@ -43,6 +45,13 @@ $(document).ready(function(){
         $(this).css("padding-left", menu_select_padding);
     });
     $("ul.menu li.menu-item a").mouseleave(function(){
+        $(this).css("padding-left", "0px");
+    });
+
+    $("a.post-link").mouseenter(function(){
+        $(this).css("padding-left", post_link_select_padding);
+    });
+    $("a.post-link").mouseleave(function(){
         $(this).css("padding-left", "0px");
     });
     
