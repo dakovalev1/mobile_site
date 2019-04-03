@@ -15,6 +15,5 @@ $(document).ready(function(){
     $("ul.menu li.menu-item a").click(function(){
         menu_toggle = false;
         $("ul.menu").css("height", "50px");
-        return false;
     });
 });

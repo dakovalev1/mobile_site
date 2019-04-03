@@ -39,46 +39,48 @@ MAX_POSTS = 5
 
 
 
+def page_section_begin(index, block, color):
+        print("<div class = \"page-section\" id=\"" + block.lower() + "\" style=\"background-color: " + color + "\">", file=index)
+        print("<h1 class = \"page-section-title\">" + block + "</h1>", file=index)
+def page_section_end(index):
+    print("1<br>", file=index)
+    print("1<br>", file=index)
+    print("1<br>", file=index)
+    print("1<br>", file=index)
+    print("1<br>", file=index)
+    print("1<br>", file=index)
+    print("</div>", file=index)
 
+def news_section(index, number=None):
+
+    for root, dirs, files in os.walk("posts"):
+        int_names = [int(name, 10) for name in dirs]
+        int_names.sort()
+        str_names = [str(name) for name in int_names]
+        str_names.reverse()
+
+        if (number is None) == False:
+            str_names = str_names[:number]
+
+        for name in str_names:
+            # config.cfg
+            cfg = configparser.ConfigParser()
+            cfg.read(os.path.join(root, name, "config.cfg"))
+        
+            print("post:", name)
+            print("<div class=\"post-container\">",file=index)
+            print("<h1>" + cfg["DEFAULT"]["title"] + "</h1>",file=index)
+            print(cfg["DEFAULT"]["summary"],file=index)
+            print("<div class = \"date-container\">" + cfg["DEFAULT"]["date"] + "</div>",file=index)
+            print("</div>",file=index)
+        break
 
 
 
 def gen_index():
     index = open("docs/index.html", "w")
 
-    def page_section_begin(block, color):
-        print("<div class = \"page-section\" id=\"" + block.lower() + "\" style=\"background-color: " + color + "\">", file=index)
-        print("<h1 class = \"page-section-title\">" + block + "</h1>", file=index)
-    def page_section_end():
-        print("1<br>", file=index)
-        print("1<br>", file=index)
-        print("1<br>", file=index)
-        print("1<br>", file=index)
-        print("1<br>", file=index)
-        print("1<br>", file=index)
-        print("</div>", file=index)
-
-    def news_section():
-        print("<a href=\"\" class=\"post-link\">More Posts <i class=\"fas fa-angle-double-right\"></i></a>", file=index)
-
-        for root, dirs, files in os.walk("posts"):
-            int_names = [int(name, 10) for name in dirs]
-            int_names.sort()
-            str_names = [str(name) for name in int_names]
-            str_names.reverse()
-
-            for name in str_names[:MAX_POSTS]:
-                # config.cfg
-                cfg = configparser.ConfigParser()
-                cfg.read(os.path.join(root, name, "config.cfg"))
-            
-                print("post:", name)
-                print("<div class=\"post-container\">",file=index)
-                print("<h1>" + cfg["DEFAULT"]["title"] + "</h1>",file=index)
-                print(cfg["DEFAULT"]["summary"],file=index)
-                print("<div class = \"date-container\">" + cfg["DEFAULT"]["date"] + "</div>",file=index)
-                print("</div>",file=index)
-            break
+    
 
 
     print("<!DOCTYPE html>", file=index)
@@ -88,6 +90,13 @@ def gen_index():
     head = open("src/common/html/head.html", "r")
     index.write(head.read())
 
+    print("<script src=\"js/redirect.js\"></script>", file=index)
+    print("<script src=\"js/menu_slide.js\"></script>", file=index)
+    print("<script src=\"js/menu_highlight.js\"></script>", file=index)
+    print("<script src=\"js/menu_scroll.js\"></script>", file=index)
+
+    print("<link rel=\"stylesheet\" href=\"css/common.css\">", file=index)
+
     print("</head>", file=index)
 
     print("<body>", file=index)
@@ -96,21 +105,51 @@ def gen_index():
     index.write(menu.read())
 
 
-    page_section_begin("About", "#ffffff")
-    page_section_end()
+    page_section_begin(index, "About", "#ffffff")
+    page_section_end(index)
 
-    page_section_begin("News", "#f7f7f7")
-    print("<div class=\"post-list\">", file=index)
-    news_section()
-    print("</div>", file=index)
-        
-    page_section_end()
+    page_section_begin(index, "News", "#f7f7f7")
+    print("<a href=\"news.html\" class=\"post-link\">More Posts <i class=\"fas fa-angle-double-right\"></i></a>", file=index)
+    news_section(index, MAX_POSTS)
+    page_section_end(index)
 
-    page_section_begin("Papers", "#ffffff")
-    page_section_end()
+    page_section_begin(index, "Papers", "#ffffff")
+    page_section_end(index)
 
-    page_section_begin("Contact", "#f7f7f7")
-    page_section_end()
+    page_section_begin(index, "Contact", "#f7f7f7")
+    page_section_end(index)
+
+    print("</body>", file=index)
+    print("</html>", file=index)
+
+
+
+def gen_news():
+    index = open("docs/news.html", "w")
+
+    print("<!DOCTYPE html>", file=index)
+    print("<html lang = \"en-US\">", file=index)
+    print("<head>", file=index)
+
+    head = open("src/common/html/head.html", "r")
+    index.write(head.read())
+
+    print("<script src=\"js/redirect.js\"></script>", file=index)
+    print("<script src=\"js/menu_slide.js\"></script>", file=index)
+
+    print("<link rel=\"stylesheet\" href=\"css/common.css\">", file=index)
+    print("<link rel=\"stylesheet\" href=\"css/news.css\">", file=index)
+
+    print("</head>", file=index)
+
+    print("<body>", file=index)
+
+    menu = open("src/common/html/menu.html", "r")
+    index.write(menu.read())
+
+    page_section_begin(index, "News", "#f7f7f7")
+    news_section(index)
+    page_section_end(index)   
 
     print("</body>", file=index)
     print("</html>", file=index)
@@ -127,15 +166,18 @@ os.mkdir("docs/css")
 os.mkdir("docs/js")
 
 shutil.copy("src/common/css/common.css", "docs/css/common.css")
-
+shutil.copy("src/common/css/news.css", "docs/css/news.css")
 
 shutil.copy("src/common/js/jquery.waypoints.min.js", "docs/js/jquery.waypoints.min.js")
 shutil.copy("src/common/js/jquery.scrollTo.min.js", "docs/js/jquery.scrollTo.min.js")
-shutil.copy("src/common/js/common.js", "docs/js/common.js")
+
+shutil.copy("src/common/js/redirect.js", "docs/js/redirect.js")
 shutil.copy("src/common/js/menu_slide.js", "docs/js/menu_slide.js")
 shutil.copy("src/common/js/menu_highlight.js", "docs/js/menu_highlight.js")
+shutil.copy("src/common/js/menu_scroll.js", "docs/js/menu_scroll.js")
 
 gen_index()
+gen_news()
 
 
 

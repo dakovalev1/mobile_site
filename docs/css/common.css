@@ -80,7 +80,7 @@ div.page-section h1.page-section-title{
     font-weight:400;
 }
 
-#news.page-section div.post-list div.post-container{
+#news.page-section div.post-container{
     font-family: "Helvetica";
     background-color: white;
     padding: 15px;
@@ -88,18 +88,18 @@ div.page-section h1.page-section-title{
     font-size: 13px;
 }
 
-#news.page-section div.post-list div.post-container h1{
+#news.page-section div.post-container h1{
     margin-top: 0px;
 }
 
-#news.page-section div.post-list div.post-container div.date-container{
+#news.page-section div.post-container div.date-container{
     color: gray;
     margin-top: 20px;
     font-size: 15px;
     font-family: monospace;
 }
 
-#news.page-section div.post-list a.post-link{
+#news.page-section a.post-link{
     color: #45b;
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
