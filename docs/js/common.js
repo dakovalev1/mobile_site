@@ -45,10 +45,36 @@ $(document).ready(function(){
     $("ul.menu li.menu-item a").mouseleave(function(){
         $(this).css("padding-left", "0px");
     });
+
+    var counter = 1;
     
-    $.get("posts/1.html", function(data){
-        console.log("success")
-        console.log(data)
+    
+    /*$("#news.page-section h1").click(function(){
+        $.get("posts/" + counter.toString() + ".html", function(data){
+            console.log(data);
+            counter += 1;
+            $("div.post-container").html(data);
+            MathJax.Hub.Queue(['Typeset', MathJax.Hub, "div.post-container"]);
+        }, "text");
+    });*/
+    
+    
+    $.get("posts.txt", function(data){
+        $("div.post-list").html("");
+        
+        var post_list = data.split('\n').slice(0, -1);
+        post_list.forEach(function(post,idx){
+            
+            var html = "<div class = \"post-container\">" 
+            html += "<h1>" + post + "</h1>"
+            
+            html += "<\div>"
+            
+            
+            
+            $("div.post-list").html($("div.post-list").html() + html);
+            console.log(post, idx);
+        });
     }, "text");
     
 });
