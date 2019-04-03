@@ -12,15 +12,23 @@ def compile_posts():
         for name in dirs:
             # index.md
             input = open(os.path.join(root, name, "index.md"), "r")
-            output = open(os.path.join("docs/posts", name + ".html"), "w")
+            os.mkdir(os.path.join("docs/posts", name))
+            output = open(os.path.join("docs/posts", name, "post.html"), "w")
             print(markdown.markdown(input.read(), extensions=['mdx_math']),file=output)
 
             # config.cfg
             cfg = configparser.ConfigParser()
             cfg.read(os.path.join(root, name, "config.cfg"))
-            print(os.path.join(root, name, "config.cfg"), cfg["DEFAULT"]["title"])
-
+            
+            print("post:", name)
             print(name, file=post_list)
+
+            output = open(os.path.join("docs/posts", name, "summary.html"), "w")
+            print("<div class=\"post-container\">",file=output)
+            print("<h1>" + cfg["DEFAULT"]["title"] + "</h1>",file=output)
+            print(cfg["DEFAULT"]["summary"],file=output)
+            print("<div class = \"date-container\">" + cfg["DEFAULT"]["date"] + "</div>",file=output)
+            print("</div>",file=output)
         break
 
 

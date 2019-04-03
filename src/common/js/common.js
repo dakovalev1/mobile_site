@@ -45,8 +45,6 @@ $(document).ready(function(){
     $("ul.menu li.menu-item a").mouseleave(function(){
         $(this).css("padding-left", "0px");
     });
-
-    var counter = 1;
     
     
     /*$("#news.page-section h1").click(function(){
@@ -59,21 +57,13 @@ $(document).ready(function(){
     });*/
     
     
-    $.get("posts.txt", function(data){
+    $.get("posts.txt", function(posts_txt){
         $("div.post-list").html("");
-        
-        var post_list = data.split('\n').slice(0, -1);
-        post_list.forEach(function(post,idx){
-            
-            var html = "<div class = \"post-container\">" 
-            html += "<h1>" + post + "</h1>"
-            
-            html += "<\div>"
-            
-            
-            
-            $("div.post-list").html($("div.post-list").html() + html);
-            console.log(post, idx);
+        var post_list = posts_txt.split('\n').slice(0, -1);
+        post_list.forEach(function(name,idx){
+            $.get("posts/" + name + "/summary.html", function(post_summary){
+                $("div.post-list").html($("div.post-list").html() + post_summary);
+            }, "text");
         });
     }, "text");
     

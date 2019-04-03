@@ -89,3 +89,10 @@ div.page-section h1.page-section-title{
 #news.page-section div.post-list div.post-container h1{
     margin-top: 0px;
 }
+
+#news.page-section div.post-list div.post-container div.date-container{
+    color: gray;
+    margin-top: 20px;
+    font-size: 15px;
+    font-family: monospace;
+}
