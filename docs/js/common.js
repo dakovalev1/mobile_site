@@ -5,8 +5,11 @@ $(document).ready(function(){
     const menu_select_padding = "10px";
 
     const post_link_select_padding = "10px";
-    
-    $("ul.menu").css("height", "50px");
+
+    /*var elem = $(window.location.hash);
+    if (elem){
+        $.scrollTo(elem, 500, {offset:-50});
+    }*/
     
     $("ul.menu li.menu-button a").click(function(){
         if (menu_toggle){
@@ -19,6 +22,8 @@ $(document).ready(function(){
     });
     
     $("ul.menu li.menu-item a").click(function(){
+        menu_toggle = false;
+        $("ul.menu").css("height", "50px");
         $.scrollTo($(this).attr("href"), 500, {offset:-50});
         return false;
     });
@@ -41,7 +46,7 @@ $(document).ready(function(){
         
     }, {offset: "50px"});
     
-    $("ul.menu li.menu-item a").mouseenter(function(){
+    /*$("ul.menu li.menu-item a").mouseenter(function(){
         $(this).css("padding-left", menu_select_padding);
     });
     $("ul.menu li.menu-item a").mouseleave(function(){
@@ -53,16 +58,5 @@ $(document).ready(function(){
     });
     $("a.post-link").mouseleave(function(){
         $(this).css("padding-left", "0px");
-    });
-    
-    
-    /*$("#news.page-section h1").click(function(){
-        $.get("posts/" + counter.toString() + ".html", function(data){
-            console.log(data);
-            counter += 1;
-            $("div.post-container").html(data);
-            MathJax.Hub.Queue(['Typeset', MathJax.Hub, "div.post-container"]);
-        }, "text");
     });*/
-    
 });
