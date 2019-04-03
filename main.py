@@ -2,14 +2,18 @@ import os
 import shutil
 import markdown
 import configparser
-
+import numpy
 
 
 def compile_posts():
     post_list = open("docs/posts.txt", "w")
     for root, dirs, files in os.walk("posts"):
-        dirs.sort()
-        for name in dirs:
+
+        int_names = [int(name, 10) for name in dirs]
+        int_names.sort()
+        str_names = [str(name) for name in int_names]
+
+        for name in str_names:
             # index.md
             input = open(os.path.join(root, name, "index.md"), "r")
             os.mkdir(os.path.join("docs/posts", name))
