@@ -128,9 +128,12 @@ os.mkdir("docs/js")
 
 shutil.copy("src/common/css/common.css", "docs/css/common.css")
 
-shutil.copy("src/common/js/common.js", "docs/js/common.js")
+
 shutil.copy("src/common/js/jquery.waypoints.min.js", "docs/js/jquery.waypoints.min.js")
 shutil.copy("src/common/js/jquery.scrollTo.min.js", "docs/js/jquery.scrollTo.min.js")
+shutil.copy("src/common/js/common.js", "docs/js/common.js")
+shutil.copy("src/common/js/menu_slide.js", "docs/js/menu_slide.js")
+shutil.copy("src/common/js/menu_highlight.js", "docs/js/menu_highlight.js")
 
 gen_index()
 
