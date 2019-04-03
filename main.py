@@ -4,36 +4,40 @@ import markdown
 import configparser
 import numpy
 
+MAX_POSTS = 5
 
-def compile_posts():
-    post_list = open("docs/posts.txt", "w")
-    for root, dirs, files in os.walk("posts"):
+# def compile_posts():
+#     post_list = open("docs/posts.txt", "w")
+#     for root, dirs, files in os.walk("posts"):
 
-        int_names = [int(name, 10) for name in dirs]
-        int_names.sort()
-        str_names = [str(name) for name in int_names]
+#         int_names = [int(name, 10) for name in dirs]
+#         int_names.sort()
+#         str_names = [str(name) for name in int_names]
+#         str_names.reverse()
 
-        for name in str_names:
-            # index.md
-            input = open(os.path.join(root, name, "index.md"), "r")
-            os.mkdir(os.path.join("docs/posts", name))
-            output = open(os.path.join("docs/posts", name, "post.html"), "w")
-            print(markdown.markdown(input.read(), extensions=['mdx_math']),file=output)
+#         for name in str_names[:MAX_POSTS]:
+#             # index.md
+#             input = open(os.path.join(root, name, "index.md"), "r")
+#             os.mkdir(os.path.join("docs/posts", name))
+#             output = open(os.path.join("docs/posts", name, "post.html"), "w")
+#             print(markdown.markdown(input.read(), extensions=['mdx_math']),file=output)
 
-            # config.cfg
-            cfg = configparser.ConfigParser()
-            cfg.read(os.path.join(root, name, "config.cfg"))
+#             # config.cfg
+#             cfg = configparser.ConfigParser()
+#             cfg.read(os.path.join(root, name, "config.cfg"))
             
-            print("post:", name)
-            print(name, file=post_list)
+#             print("post:", name)
+#             print(name, file=post_list)
 
-            output = open(os.path.join("docs/posts", name, "summary.html"), "w")
-            print("<div class=\"post-container\">",file=output)
-            print("<h1>" + cfg["DEFAULT"]["title"] + "</h1>",file=output)
-            print(cfg["DEFAULT"]["summary"],file=output)
-            print("<div class = \"date-container\">" + cfg["DEFAULT"]["date"] + "</div>",file=output)
-            print("</div>",file=output)
-        break
+#             output = open(os.path.join("docs/posts", name, "summary.html"), "w")
+#             print("<div class=\"post-container\">",file=output)
+#             print("<h1>" + cfg["DEFAULT"]["title"] + "</h1>",file=output)
+#             print(cfg["DEFAULT"]["summary"],file=output)
+#             print("<div class = \"date-container\">" + cfg["DEFAULT"]["date"] + "</div>",file=output)
+#             print("</div>",file=output)
+#         break
+
+
 
 
 
@@ -54,6 +58,26 @@ def gen_index():
         print("1<br>", file=index)
         print("</div>", file=index)
 
+    def news_section():
+        for root, dirs, files in os.walk("posts"):
+
+            int_names = [int(name, 10) for name in dirs]
+            int_names.sort()
+            str_names = [str(name) for name in int_names]
+            str_names.reverse()
+
+            for name in str_names[:MAX_POSTS]:
+                # config.cfg
+                cfg = configparser.ConfigParser()
+                cfg.read(os.path.join(root, name, "config.cfg"))
+            
+                print("post:", name)
+                print("<div class=\"post-container\">",file=index)
+                print("<h1>" + cfg["DEFAULT"]["title"] + "</h1>",file=index)
+                print(cfg["DEFAULT"]["summary"],file=index)
+                print("<div class = \"date-container\">" + cfg["DEFAULT"]["date"] + "</div>",file=index)
+                print("</div>",file=index)
+            break
 
 
     print("<!DOCTYPE html>", file=index)
@@ -75,7 +99,10 @@ def gen_index():
     page_section_end()
 
     page_section_begin("News", "#f7f7f7")
-    print("<div class=\"post-list\"></div>", file=index)
+    print("<div class=\"post-list\">", file=index)
+    news_section()
+    print("</div>", file=index)
+        
     page_section_end()
 
     page_section_begin("Papers", "#ffffff")
@@ -97,7 +124,6 @@ clean()
 os.mkdir("docs")
 os.mkdir("docs/css")
 os.mkdir("docs/js")
-os.mkdir("docs/posts")
 
 shutil.copy("src/common/css/common.css", "docs/css/common.css")
 
@@ -109,4 +135,4 @@ gen_index()
 
 
 
-compile_posts()
+#compile_posts()

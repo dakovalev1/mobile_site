@@ -56,15 +56,4 @@ $(document).ready(function(){
         }, "text");
     });*/
     
-    
-    $.get("posts.txt", function(posts_txt){
-        $("div.post-list").html("");
-        var post_list = posts_txt.split('\n').slice(0, -1);
-        post_list.forEach(function(name,idx){
-            $.get("posts/" + name + "/summary.html", function(post_summary){
-                $("div.post-list").html($("div.post-list").html() + post_summary);
-            }, "text");
-        });
-    }, "text");
-    
 });
